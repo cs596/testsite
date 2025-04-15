@@ -4,5 +4,35 @@
 </head>
 <body>
 This is a test site.
+<p></p>
+<form id="myForm"> 
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="Name" required><br><br>
+
+  <label for="company">Company:</label><br>
+  <input type="text" id="company" name="Company" required><br><br>
+
+  <input type="submit" value="Send Email">
+</form>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const form = document.getElementById('myForm');
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const company = document.getElementById('company').value;
+
+      const subject = encodeURIComponent("Form Submission");
+      const body = encodeURIComponent(`Name: ${name}\nCompany: ${company}`);
+      const mailtoLink = `mailto:joe@aol.com?subject=${subject}&body=${body}`;
+
+      window.location.href = mailtoLink;
+    });
+  });
+</script>
+
 </body>
 </html>
